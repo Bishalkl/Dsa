@@ -1,5 +1,6 @@
 
 # creating a class for stack by using list() of python
+
 class Stack:
     # constructor
     def __init__(self):
@@ -26,7 +27,7 @@ class Stack:
         if self.is_empty():
             print("Stack is empty")
             return None
-        return self.list[-1]
+        print(self.list[-1])
     
 
     def display(self):
@@ -44,4 +45,5 @@ mylist.push(23)
 mylist.push(45)
 mylist.push(67)
 mylist.pop()
+mylist.peek()
 mylist.display()
