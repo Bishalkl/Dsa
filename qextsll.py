@@ -18,6 +18,7 @@ class Queue:
     def dequeue(self):
         if not self.is_empty():
             self.sll.delete_at_first()
+            return
         else:
             return 'Queue is empty'
 
@@ -26,7 +27,7 @@ class Queue:
     #get_rear
     def get_front(self):
         if not self.is_empty():
-            return self.sll.searching(self.size() - 1)
+            return self.sll.searching(self.size()-1)
         else:
             return 'Queue is empty'
         
