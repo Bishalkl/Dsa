@@ -30,24 +30,32 @@ class SLL:
             print('Linked list is empty')
             return None
         else:
-            self.start= self.start.next
+            self.start = self.start.next
 
     def delete_at_last(self):
         if self.is_empty():
             print('Linked list is empty')
             return None
+        elif self.start.next is None:
+            self.start = None
+            return
         else:
             current = self.start
-            previous = None
-            while current.next is not None:
-                previous = current
+            while current.next.next is not None:
                 current = current.next
-            previous.next = None
+            current.next = None
 
     def insert_at_index(self, data, index):
+        if index < 0:
+            print("Invalid index")
+            return
         new_node = Node(data)
         if self.is_empty():
-            return None
+            if index == 0:
+                self.start = new_node
+            else:
+                print("Invalid index")
+            return
         if index == 0:
             new_node.next = self.start
             self.start = new_node
@@ -78,7 +86,7 @@ class SLL:
     def delete(self, index):
         if self.is_empty():
             print('Linked list is empty')
-            return  None
+            return None
         if index == 0 and self.start is not None:
             self.start = self.start.next
             return
@@ -87,7 +95,10 @@ class SLL:
         prev = None
         while temp is not None:
             if count == index-1:
-                prev.next = temp.next
+                if temp.next is None:
+                    prev.next = None
+                else:
+                    prev.next = temp.next
                 break
             prev = temp
             temp = temp.next
@@ -99,7 +110,7 @@ class SLL:
     def display(self):
         if self.is_empty():
             print('Linked list is empty')
-            return None
+            return
         current = self.start
         while current is not None:
             print(current.item, end=" ")

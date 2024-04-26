@@ -1,5 +1,5 @@
 # creatig queue datastructure by extending singly linked list 
-from sll import SLL, Node
+from sll import *
 
 class Queue:
     #constructor
