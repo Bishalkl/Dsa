@@ -34,14 +34,18 @@ class Dequeue:
     def insert_at_Front(self, data):
         new_node = Node(data)
         if self.is_empty():
+            new_node.next = None
+            new_node.prev = None
             self.head = new_node
             return
         else:
-            current = self.head
-            while current is not None:
+            current  = self.head
+            while current.next is not None:
                 current = current.next
-            current.next = new_node
+            new_node.next = None
             new_node.prev = current
+            current.next = new_node
+            
 
 
     #Delete_at_Rear
@@ -61,10 +65,11 @@ class Dequeue:
         else:
             current = self.head
             previous = None
-            while current is not None:
-                current = current.next
+            while current.next is not None:
                 previous = current
+                current = current.next
             previous.next = None
+                
 
     #size
     def size(self):
