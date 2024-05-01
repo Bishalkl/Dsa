@@ -6,5 +6,5 @@ def sum(n):
     s = n + sum(n-1)
     return s
 
-a = sum(2)
+a = sum(4)
 print(a)
