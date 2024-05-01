@@ -8,3 +8,10 @@ def sum(n):
 
 a = sum(4)
 print(a)
+
+#Basic stuff should we know to make Recursive function
+#Recursive case
+#Base case
+
+
+
