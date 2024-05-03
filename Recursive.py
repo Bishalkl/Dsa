@@ -59,3 +59,25 @@ def printevenN(n):
 printevenN(12)
 print()
 
+
+#Wap a recursive function to print first N odd natural number in reverse order
+def printoddN(n):
+    if n >= 1:
+        if not n % 2 == 0:
+            print(n, end=" ")
+        printoddN(n-1)
+
+printoddN(12)
+print()
+
+#Wap a recursive function to print first N even natural number in reverse order
+def printevenN(n):
+    if n >= 1:
+        if n % 2 is 0:
+            print(n, end=" ")
+        printevenN(n - 1)
+
+printevenN(12)
+print()
+
+
