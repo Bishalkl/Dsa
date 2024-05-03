@@ -6,7 +6,7 @@ def sum(n):
     return n + sum(n-1)
 
 
-a = sum(4)
+a = sum(20)
 print(a)
 
 #Basic stuff should we know to make Recursive function
@@ -14,4 +14,5 @@ print(a)
 #Base case
 
 
+#Five first basic warm up example 
 
