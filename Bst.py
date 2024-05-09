@@ -1,46 +1,51 @@
-# Creating a Binary search tree
-# create a node
+# creating a binary search tree 
+
+# creating a class for node 
 class Node:
+
     # constructor
-    def __init__(self, item=None):
+    def __init__(self,item=None):
         self.left = None
         self.item = item
         self.right = None
 
-# create a class for binary search tree
+# create a class for binary search tree 
 class BST:
+
     # constructor
-    def __init__(self, root=None):
+    def __init__(self,root=None):
         self.root = root
 
-    # method for empty
+    #check empty or not 
     def is_empty(self):
         return self.root is None
     
-    # method for insertion
+    # to insert the data 
     def insert(self, data):
-        # create a node object
+
+        # create a node object insert into data structure
         new_node = Node(data)
 
-        # first case: is empty
+        # case: if the root is empty
         if self.is_empty():
             self.root = new_node
             return
         
+        #case not empty root 
+        current = self.root 
 
-        current = self.root
-
-
+        # loop for traversing 
         while True:
-            # case if data is greate 
-            if data >= current.item:
+            # case if the data is greater than current
+            if data > current.item:
                 if current.right is None:
                     current.right = new_node
                     break
                 else:
                     current = current.right
-
-            elif data < current.item:
+            
+            #case if the data is smaller than current
+            if data < current.item:
                 if current.left is None:
                     current.left = new_node
                     break
@@ -48,35 +53,31 @@ class BST:
                     current = current.left
 
 
-            
-# Test your code
-if __name__ == "__main__":
-    # Create an instance of the BST class
-    bst = BST()
 
-    # Insert some data into the binary search tree
-    data_list = [10, 5, 15, 3, 7, 12, 17]
-    for data in data_list:
-        bst.insert(data)
+# Drive code 
+# Create a binary search tree
+bst = BST()
 
-    # Print the contents of the binary search tree
-    def inorder_traversal(node):
-        if node is not None:
-            inorder_traversal(node.left)
-            print(node.item, end=" ")
-            inorder_traversal(node.right)
+# Insert some data into the tree
+bst.insert(5)
+bst.insert(3)
+bst.insert(7)
+bst.insert(2)
+bst.insert(4)
+bst.insert(6)
+bst.insert(8)
 
-    print("Inorder traversal of the binary search tree:")
-    inorder_traversal(bst.root)            
+# Function to print the tree
+def print_tree(node, level=0):
+    if node is not None:
+        print_tree(node.right, level + 1)
+        print(' ' * 4 * level + '->', node.item)
+        print_tree(node.left, level + 1)
 
-
-                
-
-
-            
-
-
-
+# Print the tree
+print("Binary Search Tree:")
+print_tree(bst.root)
+       
 
         
-
+        
