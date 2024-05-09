@@ -52,31 +52,86 @@ class BST:
                 else:
                     current = current.left
 
+        
+        #method for deletion
+            def delete(self, data):
+                if self.is_empty():
+                    print("Your binary search tree is empty")
+                    return
+                
+                # create a traversinng first 
+                previous = None
+                current = self.root
+
+                # loop for traversing 
+                while True:
+                    # case if the data is equal and found the data 
+                    if data  == current.item:
+                        # case with no children
+                        if current.left is None and current.right is None:
+                            # case right is data 
+                            if previous.right.item == current.item:
+                                previous.right = None
+                                current = previous
+                                break
+
+                            # case left is data
+                            elif previous.left.item == current.item:
+                                previous.left = None
+                                current.previous
+                                break
+
+                        # case with one children
+                        elif current.right is not None or current.left is not None:
+                            pass
+                        # case wit two children
+
+                    
 
 
-# Drive code 
-# Create a binary search tree
-bst = BST()
+                
+                    # case if the data is greater 
+                    elif data > current.item:
+                        previous = current
+                        current = current.right
 
-# Insert some data into the tree
-bst.insert(5)
-bst.insert(3)
-bst.insert(7)
-bst.insert(2)
-bst.insert(4)
-bst.insert(6)
-bst.insert(8)
+                    elif data < current.item:
+                        previous = current
+                        current = current.left
 
-# Function to print the tree
-def print_tree(node, level=0):
-    if node is not None:
-        print_tree(node.right, level + 1)
-        print(' ' * 4 * level + '->', node.item)
-        print_tree(node.left, level + 1)
 
-# Print the tree
-print("Binary Search Tree:")
-print_tree(bst.root)
+
+                        
+
+
+
+
+                
+                
+
+                
+                
+                
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
        
 
         
