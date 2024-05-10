@@ -81,23 +81,35 @@ class BST:
                 return traverse.item 
               
         return None
+    
 
-# Drive code 
-# Create a binary search tree instance
-bst = BST()
+    # method for implement inorder traversal
+    def in_order_traversal(self):
+        # if the tree is empty
+        if self.root is None:
+            return None
+        
+        # create a travese variable 
+        traverse = self.root
+        previous = None
 
-# Insert some elements into the tree
-bst.insert(5)
-bst.insert(3)
-bst.insert(7)
-bst.insert(1)
-bst.insert(4)
-bst.insert(6)
-bst.insert(8)
+        # loop for traverse
+        while True:
+            
+            if traverse.item is not None: 
+                print(traverse.item, end=" ")
+                traverse = traverse.left
+            else: 
+                print(traverse.right.item)
+                traverse = traverse.right
+                
 
-# Test searching functionality
-print("Searching for 4:", bst.searching(4))  # Output: 4
-print("Searching for 10:", bst.searching(10))  # Output: None
+            
+
+
+
+
+
 
                 
 
