@@ -1,118 +1,105 @@
-# creating a binary search tree 
+# Assignnment-20: Binary Search Tree part-1
 
-# creating a class for node 
+# create a class for nnode 
 class Node:
 
     # constructor
     def __init__(self,item=None):
         self.left = None
         self.item = item
-        self.right = None
+        self.right= None
 
 # create a class for binary search tree 
 class BST:
 
     # constructor
-    def __init__(self,root=None):
+    def __init__(self, root=None):
         self.root = root
 
-    #check empty or not 
-    def is_empty(self):
-        return self.root is None
-    
-    # to insert the data 
+
+    # method for insert a data
     def insert(self, data):
 
-        # create a node object insert into data structure
+        # create node object
         new_node = Node(data)
 
-        # case: if the root is empty
-        if self.is_empty():
+        # case one tree is empty
+        if self.root is None:
             self.root = new_node
             return
         
-        #case not empty root 
-        current = self.root 
+        # case for insert with traversing according to the condition and rules
+        traverse = self.root
 
-        # loop for traversing 
+        # loop for traverse 
         while True:
-            # case if the data is greater than current
-            if data > current.item:
-                if current.right is None:
-                    current.right = new_node
+
+            # case one if the data is smaller than self.root
+            if data < traverse.item:
+                if traverse.left is None:
+                    traverse.left = new_node
                     break
                 else:
-                    current = current.right
+                    traverse = traverse.left
+
+            # case two if the data is greater than self.root
+            elif data > traverse.item:
+                if traverse.right is None:
+                    traverse.right = new_node
+                    break
+                else: 
+                    traverse = traverse.right
             
-            #case if the data is smaller than current
-            if data < current.item:
-                if current.left is None:
-                    current.left = new_node
-                    break
-                else:
-                    current = current.left
-
-        
-        #method for deletion
-            def delete(self, data):
-                if self.is_empty():
-                    print("Your binary search tree is empty")
-                    return
-                
-                # create a traversinng first 
-                previous = None
-                current = self.root
-
-                # loop for traversing 
-                while True:
-                    # case if the data is equal and found the data 
-                    if data  == current.item:
-                        # case with no children
-                        if current.left is None and current.right is None:
-                            # case right is data 
-                            if previous.right.item == current.item:
-                                previous.right = None
-                                current = previous
-                                break
-
-                            # case left is data
-                            elif previous.left.item == current.item:
-                                previous.left = None
-                                current.previous
-                                break
-
-                        # case with one children
-                        elif current.right is not None or current.left is not None:
-                            pass
-                        # case wit two children
-
-                    
+            else:
+                print("Your data is not valid")
 
 
-                
-                    # case if the data is greater 
-                    elif data > current.item:
-                        previous = current
-                        current = current.right
+    #method for searching 
+    def searching(self, data):
 
-                    elif data < current.item:
-                        previous = current
-                        current = current.left
+        # if tree is empty
+        if self.root is None:
+            print("Your tree is empty")
+            return None
 
+        # create a traverse variable 
+        traverse = self.root
 
+        # loop for traverse
+        while traverse:
 
-                        
+            # if data is smaller
+            if data < traverse.item:
+                traverse = traverse.left
 
+            # if data is greater
+            elif data > traverse.item:
+                traverse = traverse.right
+            
+            # otherwise
+            else:
+                return traverse.item 
+              
+        return None
 
+# Drive code 
+# Create a binary search tree instance
+bst = BST()
 
+# Insert some elements into the tree
+bst.insert(5)
+bst.insert(3)
+bst.insert(7)
+bst.insert(1)
+bst.insert(4)
+bst.insert(6)
+bst.insert(8)
+
+# Test searching functionality
+print("Searching for 4:", bst.searching(4))  # Output: 4
+print("Searching for 10:", bst.searching(10))  # Output: None
 
                 
-                
-
-                
-                
-                
-
 
 
 
@@ -123,16 +110,5 @@ class BST:
 
             
 
+            
 
-
-
-
-
-
-
-
-
-       
-
-        
-        
