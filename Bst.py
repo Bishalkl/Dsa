@@ -19,89 +19,60 @@ class BST:
 
     # method for insert a data
     def insert(self, data):
-
-        # create node object
-        new_node = Node(data)
-
-        # case one tree is empty
+        self.root = self._insert_recursive(self.root, data)
+    # method for recursive functin for insertion 
+    def _insert_recursive(self, root, data):
+        # first case if the code is empty
         if self.root is None:
-            self.root = new_node
-            return
-        
-        # case for insert with traversing according to the condition and rules
-        traverse = self.root
+            return Node(data)
+        # seconnd case if the data is greater
+        if data < root.item:
+            root.left = self._insert_recursive(root.left, data)
 
-        # loop for traverse 
-        while True:
+        else:
+            root.right = self._insert_recursive(root.right, data)
 
-            # case one if the data is smaller than self.root
-            if data < traverse.item:
-                if traverse.left is None:
-                    traverse.left = new_node
-                    break
-                else:
-                    traverse = traverse.left
-
-            # case two if the data is greater than self.root
-            elif data > traverse.item:
-                if traverse.right is None:
-                    traverse.right = new_node
-                    break
-                else: 
-                    traverse = traverse.right
-            
-            else:
-                print("Your data is not valid")
-
-
-    #method for searching 
+        return root
+    
+    # method for searching 
     def searching(self, data):
-
-        # if tree is empty
-        if self.root is None:
-            print("Your tree is empty")
+        return self._search_recursive(self.root, data)
+    # method for recursive function for searching 
+    def _searching_recursive(self,root,data):
+        # first case if the node is empty or the node data is equal to data that i have give
+        if self.root is None or root.item == data:
             return None
+        
+        # secod case if the data is smaller than  root data 
+        if data < root.item:
+            return self._search_recursive(root.left, data)
+        else:
+            return self._search_recursive(root.right, data)
+        
 
-        # create a traverse variable 
-        traverse = self.root
-
-        # loop for traverse
-        while traverse:
-
-            # if data is smaller
-            if data < traverse.item:
-                traverse = traverse.left
-
-            # if data is greater
-            elif data > traverse.item:
-                traverse = traverse.right
             
-            # otherwise
-            else:
-                return traverse.item 
-              
-        return None
     
 
-    # method for implement inorder traversal
-    def in_order_traversal(self):
-        # if the tree is empty
-        if self.root is None:
-            return None
         
-        # create a travese variable 
-        traverse = self.root
-        previous = None
-
-        # loop for traverse
-        while True:
+                
             
-            if traverse.item is not None: 
-                print(traverse.item, end=" ")
-                traverse = traverse.left
-            else: 
-                print(traverse.right.item)
-                traverse = traverse.right
+            
+               
+            
+
+
+
+
+            
+                
+
+                
+            
+            
+
+            
+                
+
                 
 
             
